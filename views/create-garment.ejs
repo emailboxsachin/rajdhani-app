@@ -1,0 +1,53 @@
+<%- include header.ejs %>
+
+    <form action="/garmentSave" method="post">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="garment name" name="name">
+        </div>
+        <div class="col">
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="supplier">
+            <option selected>Choose supplier</option>
+            <option value="1">Rangeela Industries Surat</option>
+            <option value="3">Mulchand Pune</option>
+          </select>
+        </div>
+        <div class="col">
+          <select class="custom-select mr-sm-2" name="garmentType">
+            <option selected>Choose garment Type</option>
+            <option value="1">Silk Saree</option>
+            <option value="2">Printed/Synthetic Sarees</option>
+            <option value="3">Under garments - Bra</option>
+            <option value="4">Under garments - Panties</option>
+            <option value="5">Kurtis</option>
+            <option value="6">T-shirts</option>
+            <option value="7">Gown</option>
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="purchase Price" 
+                 name="purchasePrice">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="purchase Quantity" 
+                 name="purchaseQuantity">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="sale Price" 
+           name="salePrice">            
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+         <button type="submit" class="btn btn-primary">Submit</button>        
+         <a class="btn btn-primary" href="/">Cancel</a>
+        </div>
+      </div>
+    </form> 
+
+
+<%- include footer.ejs %>
