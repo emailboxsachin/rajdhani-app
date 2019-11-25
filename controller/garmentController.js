@@ -20,7 +20,7 @@ garmentController.find = function(req, res) {
   const userRegex = new RegExp(searchWord, 'i')
   
   //console.log(searchWord)
-  Garment.find({name: userRegex }).exec(function (err, garments) {
+  Garment.find({searchCode: userRegex }).exec(function (err, garments) {
     if (err) {
       console.log("Error:", err);
     }
@@ -44,7 +44,7 @@ garmentController.create = function(req, res) {
 
 garmentController.save = function(req, res) {
   var garment = new Garment(req.body);
-  console.log(garment)
+  
   Garment
   .find({garmentType:garment.garmentType})
   .sort({code: 'desc'})
@@ -54,12 +54,14 @@ garmentController.save = function(req, res) {
     }else{
         garment.code = docs[0].code + 1
     }
-    console.log('new code '+ garment.code )      
+    console.log('new code '+ garment.code ) 
+    garment.searchCode = garment.garmentType.toString() + garment.code.toString()
       garment.save(function(err) {
         if(err) {
           console.log(err);
-          res.render("../views/create-garment");
+          //res.render("../views/create-garment");
         } else {
+          console.log(garment)
           console.log("Successfully created garment.");
           res.redirect("/");
         }

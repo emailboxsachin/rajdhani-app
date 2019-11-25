@@ -8,6 +8,7 @@ var GarmentSchema = new mongoose.Schema({
   purchaseQuantity: Number,
   salePrice: Number,
   code: Number,
+  searchCode: String,
   updated_at: { type: Date, default: Date.now },
 });
 

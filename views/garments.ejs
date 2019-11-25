@@ -2,34 +2,45 @@
 <%- include header.ejs %> 
       <div class="row">
           <div class="col">
-            <a href="/create"><img src="plus.png"></a> 
+            <a href="/create" class="btn btn-primary mb-2">New</a> 
           </div> 
           <div class="col">      
               <form class="form-inline" action="/garmentFind" method="post">
                   <div class="form-group mx-sm-3 mb-2">                    
-                    <input type="text" class="form-control" name="search" 
+                    <input type="text" class="form-control pull-right" name="search" 
                     placeholder="search">
                   </div>
                   <button type="submit" class="btn btn-primary mb-2">Search</button>
               </form>
           </div>
       </div>
-      <br><br>
+      
       <% if(garments.length>0) { %>     
 
           <% for(var i=0; i<garments.length;i++) { %>
             <div class="card ">
                 <div class="card-header">
-                    <a href="/employees/show/<%= garments[i]._id%>"><%= garments[i].name%></a>
+                    <div class="row">
+                        <div class="col-4">
+                            <h5 class="card-title">Name : <%= garments[i].name%></h5>
+                        </div>
+                        <div class="col-5">                           
+                        </div>
+                        <div class="col-3">
+                            <a href="#" class="btn btn-primary pull-right">Add to Bill</a>
+                        </div>        
+                    </div>                 
+                    
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Name : <%= garments[i].name%></h5>
+                <div class="card-body">                 
+                    
                     <p class="card-text">garmentType : <%= garments[i].garmentType%></p>
                     <p class="card-text">purchasePrice : <%= garments[i].purchasePrice%></p>
                     <p class="card-text">purchaseQuantity : <%= garments[i].purchaseQuantity%></p>
                     <p class="card-text">salePrice : <%= garments[i].salePrice%></p>
                     <p class="card-text">code : <%= garments[i].code%></p>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
+                    <p class="card-text">Search Code : <%= garments[i].searchCode%></p>
+                    
                 </div>
             </div>
             <br>            
