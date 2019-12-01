@@ -5,6 +5,7 @@ const path = require('path')
 var mongoose = require('mongoose');
 var db = mongoose.connect('mongodb://localhost/rajdhani');
 var garment = require("./controller/garmentController.js");
+var bill = require("./controller/billController.js");
 
 //middleware
 app.use(bodyParser.urlencoded({extended: true}))
@@ -26,6 +27,9 @@ app.post('/garmentSave', garment.save);
 
 // Find garment
 app.post('/garmentFind', garment.find);
+
+//add garment to bill
+app.get('/addToBill/', bill.addItem)
 
 // Get single garment by id
 //router.get('/show/:id', employee.show);
