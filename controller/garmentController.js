@@ -2,15 +2,13 @@ var Garment = require('../models/garment')
 var garmentController = {};
 
 garmentController.list = function(req, res) {
-  Garment.find({}).sort({updated_at: 'desc'}).exec(function (err, docs) {
+  Garment.find({}).limit(1).sort({updated_at: 'desc'}).exec(function (err, docs) {
     if (err) {
       console.log("Error:", err);
     }
-    else {
-      let latest = []
-        latest.push(docs[0])
-      //console.log(latest)
-      res.render("../views/garments", {title:'List of Garments',garments: latest});
+    else {  
+      // console.log(docs)
+      res.render("../views/garments", {title:'List of Garments',garments: docs});
     }
   });
 };
@@ -49,7 +47,7 @@ garmentController.save = function(req, res) {
   .find({garmentType:garment.garmentType})
   .sort({code: 'desc'})
   .exec(function(err, docs) {
-    if(!docs[0].code){
+    if(docs && docs.length <=0 ){
         garment.code = 1
     }else{
         garment.code = docs[0].code + 1
