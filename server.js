@@ -29,7 +29,7 @@ app.post('/garmentSave', garment.save);
 app.post('/garmentFind', garment.find);
 
 //add garment to bill
-app.get('/addToBill/', bill.addItem)
+app.get('/addToBill', bill.addItem)
 
 // Get single garment by id
 //router.get('/show/:id', employee.show);

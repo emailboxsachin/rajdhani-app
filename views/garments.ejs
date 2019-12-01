@@ -20,7 +20,7 @@
               <% for(var i=0; i<garments.length;i++) { %>
                 <div class="card ">
                     <div class="card-header">
-                      <a href="/addToBill/<%= garments[i].searchCode%>" class="btn btn-primary pull-right">
+                      <a href="/addToBill?searchCode=<%= garments[i].searchCode%>&name=<%= garments[i].name%>&price=<%= garments[i].salePrice%>" class="btn btn-primary pull-right">
                         <h5 class="card-title"><%= garments[i].name%></h5>
                       </a>                        
                     </div>
@@ -36,10 +36,8 @@
                 </div>
                 <br>            
               <% } %>
-            </tbody>
-          </table>
           <% } else { %>
-            <div>no garments found.</div>
+            <!-- <div>no garments found.</div> -->
           <% } %>
         </div>
         <div class="col-7">
@@ -63,18 +61,22 @@
                   </form>
                 </div>
                 <ul class="list-group">
+                    <% if(billItems.length>0) { %>
+                      <% for(var i=0; i<billItems.length;i++) { %>
+        
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                      Silk
-                      <span class="badge badge-primary badge-pill">14</span>
+                      <%= billItems[i].name%>
+                      <span class="badge badge-primary badge-pill"><%= billItems[i].price%></span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
                       synthetic
                       <span class="badge badge-primary badge-pill">2</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                       kurti
                       <span class="badge badge-primary badge-pill">1</span>
-                    </li>
+                    </li> -->
+                    <% } }%>
                 </ul>
             </div>
         </div>

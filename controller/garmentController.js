@@ -1,4 +1,5 @@
 var Garment = require('../models/garment')
+let global = require('../global/global')
 var garmentController = {};
 
 garmentController.list = function(req, res) {
@@ -8,7 +9,7 @@ garmentController.list = function(req, res) {
     }
     else {  
       // console.log(docs)
-      res.render("../views/garments", {title:'List of Garments',garments: docs});
+      res.render("../views/garments", {title:'List of Garments',billItems:global.billItems,garments: docs});
     }
   });
 };
@@ -24,7 +25,7 @@ garmentController.find = function(req, res) {
     }
     else {
       //console.log(garments)
-      res.render("../views/garments", {title:'List of Garments',garments: garments});
+      res.render("../views/garments", {title:'List of Garments',billItems:[],garments: garments});
     }
   });
 };
